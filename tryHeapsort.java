@@ -1,24 +1,26 @@
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class tryHeapsort {
-    static String[] load(String filename) throws Exception {
+    public static String[] loadWords(String filename) throws Exception {
 
-        ArrayList<String> words = new ArrayList<>();
+        ArrayList<String> list = new ArrayList<>();
         Scanner s = new Scanner(new File(filename));
 
         while (s.hasNext()){
             String w = s.next();
             w = w.replaceAll("[^a-zA-Z]", "").toLowerCase();
-            if (!w.isEmpty())
-                words.add(w);
+            if (!w.equals("")) list.add(w);
+
 
         }
-        s.close();;
-        return words.toArray(new String[0]);
+        s.close();
+        return list.toArray(new String[0]);
 
     }
-    static void heapify(String[] arr, int n, int i){
+    public static void heapify(String[] arr, int n, int i){
         int smallest = i;
         int left = 2*i + 1;
         int right = 2*i + 2;
@@ -36,9 +38,9 @@ public class tryHeapsort {
         }
 
     }
-    /* Build bottom up*/
-    static void buildBottomUp(String[] arr){
-        for (int i = arr.length/2 - 1; i >= 0; i++)
+
+    public static void buildBottomUp(String[] arr){
+        for (int i = arr.length/2 - 1; i >= 0; i--)
             heapify(arr, arr.length, i);
 
 
@@ -59,7 +61,7 @@ public class tryHeapsort {
             insert(arr, i);
     }
     public static void heapSort(String[] arr){
-        for (int i = arr.length - 1; i > 0; i++ ){
+        for (int i = arr.length - 1; i > 0; i-- ){
             String temp = arr[0];
             arr[0] = arr[i];
             arr[i] = temp;
@@ -68,7 +70,9 @@ public class tryHeapsort {
         }    }
     public static void main(String[] args){
         try{
-            String[] words = load("joyce1922_ulysses.text");
+            String filename = "joyce1922_ulysses.txt";
+            String[] words = loadWords(filename);
+
             String[] a = Arrays.copyOf(words, words.length);
             long start1 = System.nanoTime();
             buildBottomUp(a);
