@@ -1,7 +1,5 @@
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class tryHeapsort {
     public static String[] loadWords(String filename) throws Exception {
@@ -70,7 +68,7 @@ public class tryHeapsort {
         }    }
     public static void main(String[] args){
         try{
-            String filename = "joyce1922_ulysses.txt";
+            String filename = "joyce1922_ulysses.text";
             String[] words = loadWords(filename);
 
             String[] a = Arrays.copyOf(words, words.length);
