@@ -66,7 +66,29 @@ public class tryHeapsort {
             heapify(arr, i, 0);
 
         }    }
-    public static void main(String[] args){}
-    
+    public static void main(String[] args){
+        try{
+            String[] words = load("joyce1922_ulysses.text");
+            String[] a = Arrays.copyOf(words, words.length);
+            long start1 = System.nanoTime();
+            buildBottomUp(a);
+            heapSort(a);
+            long end1 = System.nanoTime();
+
+            String[] b = Arrays.copyOf(words, words.length);
+            long start2 = System.nanoTime();
+            buildTopDown(b);
+            heapSort(b);
+            long end2 = System.nanoTime();
+
+            System.out.println("Bottom up time: " + (end1 - start1));
+            System.out.println("Top down time: " + (end2 - start2));
+
+        }
+        catch (Exception e){
+            System.out.println("File error");
+
+        }    }
+
 
 }
