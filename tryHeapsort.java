@@ -40,12 +40,12 @@ public class tryHeapsort {
     static void buildBottomUp(String[] arr){
         for (int i = arr.length/2 - 1; i >= 0; i++)
             heapify(arr, arr.length, i);
-        
+
 
     }
     public static void insert(String[] arr, int index){
         int parent = (index - 1)/2;
-        
+
         while (index > 0 && arr[index].compareTo(arr[parent]) < 0) {
             String temp = arr[index];
             arr[index] = arr[parent];
@@ -54,5 +54,19 @@ public class tryHeapsort {
             parent = (index - 1)/2;
         }
     }
+    public static void buildTopDown(String[] arr){
+        for (int i = 1; i < arr.length; i++)
+            insert(arr, i);
+    }
+    public static void heapSort(String[] arr){
+        for (int i = arr.length - 1; i > 0; i++ ){
+            String temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+            heapify(arr, i, 0);
+
+        }    }
+    public static void main(String[] args){}
     
+
 }
