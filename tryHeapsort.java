@@ -33,7 +33,7 @@ public class tryHeapsort {
             arr[smallest] = temp;
 
             heapify(arr,n, smallest);
-        }
+        } 
 
     }
 
